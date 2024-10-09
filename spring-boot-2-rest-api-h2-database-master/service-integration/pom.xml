@@ -117,12 +117,23 @@
                         <executions>
                             <execution>
                                 <configuration>
-                                    <executable>sh</executable>
-                                    <arguments>
-                                        <argument>${project.basedir}/scripts/buildpackage.sh</argument>
-                                    </arguments>
+                                    <executable>./buildpackage.sh</executable>
                                 </configuration>
                                 <id>sh-build</id>
+                                <phase>install</phase>
+                                <goals>
+                                    <goal>exec</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <configuration>
+                                    <executable>sh</executable>
+                                    <arguments>
+                                        <argument>-c</argument>
+                                        <argument>chmod +x buildpackage.sh</argument>
+                                    </arguments>
+                                </configuration>
+                                <id>chmod-build</id>
                                 <phase>install</phase>
                                 <goals>
                                     <goal>exec</goal>
